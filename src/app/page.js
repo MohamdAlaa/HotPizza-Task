@@ -9,7 +9,18 @@ export default function Menu() {
   const [primaryColor, setPrimaryColor] = useState("#E11B0E");
   const [coverImage, setCoverImage] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // Load saved settings on initial render
+  useEffect(() => {
+    try {
+      const savedColor = localStorage.getItem("selectedColor");
+      const savedImage = localStorage.getItem("uploadedImage");
 
+      if (savedColor) setPrimaryColor(savedColor); // Load saved color
+      if (savedImage) setCoverImage(savedImage); // Load saved image
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <>
       <div className="flex ">

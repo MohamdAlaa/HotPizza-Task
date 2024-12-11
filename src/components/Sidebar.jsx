@@ -6,6 +6,17 @@ export default function Sidebar({
   setCoverImage,
   coverImage,
 }) {
+  // const handleFileUpload = (event) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const file = event.target.files[0];
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       setCoverImage(e.target.result); // Set image as base64 string
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+
   const handleFileUpload = (event) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -15,6 +26,11 @@ export default function Sidebar({
       };
       reader.readAsDataURL(file);
     }
+  };
+  const handleSaveChanges = () => {
+    localStorage.setItem("selectedColor", primaryColor); // Save color
+    localStorage.setItem("uploadedImage", coverImage); // Save image (base64 string)
+    alert("Changes saved!");
   };
 
   const handleColorChange = (event) => {
@@ -70,7 +86,10 @@ export default function Sidebar({
         </div>
       </div>
 
-      <button className="px-4 py-2 text-white bg-green-500 rounded">
+      <button
+        onClick={handleSaveChanges}
+        className="px-4 py-2 text-white bg-green-500 rounded"
+      >
         Save Changes
       </button>
     </div>

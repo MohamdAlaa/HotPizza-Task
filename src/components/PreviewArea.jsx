@@ -44,7 +44,7 @@ export default function PreviewArea({ previewMode, primaryColor, coverImage }) {
           <div
             onClick={handelOrder}
             key={item.id}
-            className="flex items-center justify-between p-4 mb-4 rounded shadow sm:h-48 h-28 sm:p-8"
+            className={`flex items-center justify-between h-26 p-4 mb-4 rounded shadow sm:p-8`}
           >
             {/* Item Details */}
 
